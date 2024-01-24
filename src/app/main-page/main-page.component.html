@@ -1,0 +1,30 @@
+<div class="container-fluid">
+  <nav class="navbar navbar-dark bg-dark mb-4">
+    <a class="navbar-brand" routerLink="/movie">MMDb</a>
+
+    <div class="mx-auto">
+      <input
+        type="text"
+        [(ngModel)]="searchQuery"
+        type="search"
+        (input)="searchMovies()"
+        class="form-control mr-sm-2"
+        placeholder="Search movies..."
+      />
+    </div>
+  </nav>
+
+  <div class="row">
+    <div *ngFor="let movie of movies" class="col-md-2 mb-4">
+      <div class="movie-card pointer" (click)="navigateToMovieDetail(movie.id)">
+        <img
+          class="movie-image img-fluid"
+          [src]="getImageUrl(movie.poster_path)"
+          alt="{{ movie.title }}"
+        />
+        <h5 class="mt-2">{{ movie.title }}</h5>
+        <h6>Rating: {{ movie.vote_average }}</h6>
+      </div>
+    </div>
+  </div>
+</div>

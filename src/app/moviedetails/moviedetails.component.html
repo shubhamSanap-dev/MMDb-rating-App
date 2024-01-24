@@ -1,0 +1,49 @@
+<div class="container-fluid">
+  <nav class="navbar navbar-dark bg-dark mb-4">
+    <a class="navbar-brand" routerLink="/movie">MMDb</a>
+
+    <div class="mx-auto">
+      <input
+        type="text"
+        type="search"
+        class="form-control mr-sm-2"
+        placeholder="{{ movie?.title }}"
+        disabled
+      />
+    </div>
+  </nav>
+  <div class="row">
+    <div class="col-md-3">
+      <img
+        class="img-fluid mt-2"
+        [src]="imageUrl(movie?.poster_path)"
+        alt="{{ movie?.title }}"
+      />
+    </div>
+    <div class="col-md-9 mt-4">
+      <h2>{{ movie?.title }}</h2>
+
+      <p *ngIf="movie?.status">
+        <strong>{{ movie.status }}</strong> &nbsp;&nbsp;&nbsp; |
+        &nbsp;&nbsp;&nbsp; <strong>Runtime:</strong> {{ movie.runtime }} minutes
+        &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp; <strong>Rating:</strong>
+        {{ movie.vote_average }}
+      </p>
+
+      <h4>Overview</h4>
+      <p>{{ movie?.overview }}</p>
+      <h4>Other Details:</h4>
+
+      <h6 *ngIf="movie?.spoken_languages">
+        <strong>Language: </strong>{{ movie.original_language }}
+      </h6>
+
+      <h6 *ngIf="movie?.budget">
+        <strong>Budget: </strong>${{ movie.budget }}
+      </h6>
+      <h6 *ngIf="movie?.revenue">
+        <strong>Revenue: </strong>${{ movie.revenue }}
+      </h6>
+    </div>
+  </div>
+</div>
